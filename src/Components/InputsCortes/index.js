@@ -7,7 +7,11 @@ function InputsCortes() {
 
   const [listCortes, setList] = useState([])
 
+  const dataFuso = new Date()
   const data = new Date()
+  const diminuirHoras = 3
+
+  data.setHours(data.getHours() - diminuirHoras)
   console.log(data)
 
   // Função para manipular o envio do formulário
@@ -20,7 +24,7 @@ function InputsCortes() {
     alert(` 
       Nome do Cliente: ${nomeCliente}\n
       Valor do Corte: ${valorCorte}\n 
-      Data: ${data} \n
+      Data: ${dataFuso} \n
       Enviado com sucesso !`)
 
     const createLocal = localStorage.getItem('@listCorte')
