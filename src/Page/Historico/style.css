@@ -12,3 +12,12 @@
   color: white;
   cursor: pointer;
 }
+.dados {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.contagem,
+.valor {
+  font-size: 26px;
+}

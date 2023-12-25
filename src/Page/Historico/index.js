@@ -8,6 +8,11 @@ function Historico() {
     setRes(verLocal)
   }, [])
 
+  const mapValor = resList.map(item => {
+    return parseFloat(item.valorCorte)
+  })
+  const sum = mapValor.reduce((sum, total) => sum + total, 0)
+
   function excluir(id) {
     const filtro = resList.filter(item => {
       return item.nomeCliente !== id
@@ -19,8 +24,9 @@ function Historico() {
   return (
     <div>
       <h1>Historico</h1>
-      <div>
-        <div>Total de cortes: {resList.length}</div>
+      <div className="dados">
+        <div className="contagem">Total de cortes: {resList.length}</div>
+        <div className="valor">Valor: R$: {sum} </div>
       </div>
 
       {resList.map(item => (
