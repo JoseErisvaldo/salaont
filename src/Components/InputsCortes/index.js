@@ -38,7 +38,6 @@ function InputsCortes() {
     listCortes.push(novoCorte)
     localStorage.setItem('@listCorte', JSON.stringify(listCortes))
   }
-
   return (
     <div id="card-input">
       <h1>Lançar Cortes</h1>
@@ -49,12 +48,10 @@ function InputsCortes() {
         {/* Input para o Valor do Corte */}
         <input type="text" placeholder="Valor do Corte" ref={valorCorteRef} />
       </div>
-
       {/* Botão de Enviar */}
       <div onClick={enviar} className="enviar">
         Enviar
       </div>
-
       {listCortes.map(item => (
         <div>
           <div>{item.nomeCliente}</div>
