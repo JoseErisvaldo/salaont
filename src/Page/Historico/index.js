@@ -69,7 +69,7 @@ function Historico() {
             {resList.map(item => (
               <div className="cards" key={item.id}>
                 <div className="cards-dados">
-                  <div>Nome: {item.data}</div>
+                  <div>Data: {item.data}</div>
                   <div>Nome: {item.nomeCliente}</div>
                   <div>Valor: {item.valorCorte}</div>
                 </div>
