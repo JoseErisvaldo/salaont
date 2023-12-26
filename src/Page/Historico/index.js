@@ -21,6 +21,14 @@ function Historico() {
     const newLocal = localStorage.setItem('@listCorte', JSON.stringify(filtro))
   }
 
+  const [resPesq, setPesq] = useState([])
+  function pesquisar(e) {
+    const filtrar = resList.filter(item => {
+      return item.nomeCliente.toLowerCase() === e.toLowerCase()
+    })
+    setPesq(filtrar)
+  }
+
   return (
     <div>
       <h1>Historico</h1>
@@ -28,19 +36,54 @@ function Historico() {
         <div className="contagem">Total de cortes: {resList.length}</div>
         <div className="valor">Valor: R$: {sum} </div>
       </div>
+      <p>
+        <input
+          className="input-pesquisar"
+          type="text"
+          placeholder="Pesquisar nome"
+          onChange={e => pesquisar(e.target.value)}
+        />
+      </p>
 
-      {resList.map(item => (
-        <div className="cards" key={item.id}>
-          <div className="cards-dados">
-            <div>Nome: {item.data}</div>
-            <div>Nome: {item.nomeCliente}</div>
-            <div>Valor: {item.valorCorte}</div>
+      <div>
+        {resPesq.length ? (
+          <div>
+            {resPesq.map(item => (
+              <div className="cards" key={item.id}>
+                <div className="cards-dados">
+                  <div>Data: {item.data}</div>
+                  <div>Nome: {item.nomeCliente}</div>
+                  <div>Valor: {item.valorCorte}</div>
+                </div>
+                <div
+                  className="excluir"
+                  onClick={e => excluir(item.nomeCliente)}
+                >
+                  Excluir
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="excluir" onClick={e => excluir(item.nomeCliente)}>
-            Excluir
+        ) : (
+          <div>
+            {resList.map(item => (
+              <div className="cards" key={item.id}>
+                <div className="cards-dados">
+                  <div>Nome: {item.data}</div>
+                  <div>Nome: {item.nomeCliente}</div>
+                  <div>Valor: {item.valorCorte}</div>
+                </div>
+                <div
+                  className="excluir"
+                  onClick={e => excluir(item.nomeCliente)}
+                >
+                  Excluir
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      ))}
+        )}
+      </div>
     </div>
   )
 }
